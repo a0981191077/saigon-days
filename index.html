@@ -1,0 +1,263 @@
+
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#174b3c">
+<title>SAIGON DAYS｜西貢旅行手冊</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&display=swap');
+:root{--g:#174b3c;--r:#a83c2d;--gold:#c69b54;--paper:#f7f3e9;--jade:#e7eee6;--ink:#26352e;--muted:#7b8279;--line:#e5dfd1;--white:#fffdf8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--jade);color:var(--ink);font-family:Arial,'Noto Serif TC',sans-serif}
+.app{max-width:1000px;margin:auto;background:var(--paper);min-height:100vh}
+header{background:var(--g);color:white;padding:17px 22px;position:sticky;top:0;z-index:5}
+.brand{font:900 19px 'Noto Serif TC';letter-spacing:3px}
+.brand small{display:block;color:#d9bd83;font:10px Arial;letter-spacing:3px}
+.hero{padding:36px 24px;background:linear-gradient(130deg,#174b3c,#326a53);color:#fff9e9}
+.eyebrow{font-size:10px;letter-spacing:3px;color:#d9bd83}
+.hero h1{font:600 clamp(32px,7vw,52px) 'Noto Serif TC';margin:12px 0}
+.hero p{font-size:13px;color:#dce7dd}
+.meta{display:flex;gap:22px;margin-top:22px}
+.meta div{border-left:1px solid #ffffff55;padding-left:12px}
+.meta b{display:block;font-size:16px}
+.meta small{font-size:9px;color:#d4c49e}
+main{padding:22px 18px 100px}
+.page{display:none}.page.active{display:block}
+.head{display:flex;justify-content:space-between;align-items:end;margin:15px 2px}
+.head h2{font:600 21px 'Noto Serif TC';color:var(--g);margin:0}
+.head small{font-size:9px;color:var(--muted)}
+.quickgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.quick,.info,.event,.place{background:var(--white);border:1px solid var(--line);border-radius:13px;padding:13px;margin-bottom:10px}
+.quick{margin:0;min-height:90px;font-size:20px}
+.quick strong{display:block;font:600 12px 'Noto Serif TC';margin-top:8px}
+.quick span,.hint{font-size:10px;color:var(--muted)}
+.days,.filters{display:flex;gap:8px;overflow:auto;padding:3px 0 12px}
+.days button,.filters button{border:1px solid var(--line);background:var(--white);color:var(--muted);border-radius:30px;padding:8px 13px;white-space:nowrap;font-size:10px}
+.days button.active,.filters button.active{background:var(--r);color:white;border-color:var(--r)}
+.daytitle{display:flex;gap:12px;align-items:center;margin:10px 0}
+.daytitle b{font-size:29px;color:var(--r)}
+.daytitle h3{font:600 15px 'Noto Serif TC';margin:0}
+.daytitle small{color:var(--muted)}
+.timeline{border-left:1px solid #d8cbb4;margin-left:8px;padding-left:16px}
+.event{position:relative;padding:12px;margin-bottom:10px}
+.event:before{content:'';position:absolute;left:-22px;top:17px;width:9px;height:9px;border-radius:50%;background:var(--gold);border:2px solid var(--paper)}
+.eventtop{display:flex;gap:10px;align-items:center}
+.time{font-size:10px;color:var(--r);font-weight:bold;min-width:42px}
+.eventname{font:600 13px 'Noto Serif TC';flex:1}
+.tag{font-size:9px;background:#e9eee7;color:var(--g);border-radius:20px;padding:4px 7px}
+.note{font-size:10px;color:var(--muted);margin:7px 0 0 52px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.place{margin:0;display:flex;flex-direction:column;justify-content:space-between;min-height:105px}
+.place h3{font:600 13px 'Noto Serif TC';margin:0 0 7px}
+.place p{font-size:10px;color:var(--muted);margin:0}
+.placefoot{display:flex;justify-content:space-between;margin-top:12px;font-size:10px}
+.placefoot a{color:var(--g);text-decoration:none}
+.search{width:100%;padding:11px;border:1px solid var(--line);border-radius:9px;background:var(--white);margin-bottom:10px}
+.info h3{font:600 14px 'Noto Serif TC';color:var(--g);margin:0 0 10px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:11px}
+.row span{color:var(--muted)}.row strong{text-align:right}
+.total{font-size:28px;font-weight:bold;color:var(--r)}
+.buy{display:flex;gap:9px;padding:10px 0;border-bottom:1px solid var(--line);font-size:12px}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,1000px);display:grid;grid-template-columns:repeat(5,1fr);background:#fffdf8f2;border-top:1px solid var(--line);padding:9px 5px calc(9px + env(safe-area-inset-bottom));z-index:8}
+.nav button{border:0;background:none;color:#858a80;font-size:9px;display:grid;gap:4px;justify-items:center}
+.nav button b{font-size:18px;font-weight:400}
+.nav button.active{color:var(--r)}
+.foot{text-align:center;color:#999487;font-size:9px;margin:25px 0}
+@media(min-width:720px){main{padding:28px 34px 50px}.cards{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div class="brand">SAIGON DAYS<small>THE LITTLE GUIDE TO SÀI GÒN</small></div></header>
+<section class="hero">
+<div class="eyebrow">VIETNAM · HO CHI MINH CITY</div>
+<h1>西貢，慢慢走。</h1>
+<p>一場關於咖啡、街道與南方陽光的五日漫遊。</p>
+<div class="meta">
+<div><b>12.10 — 12.14</b><small>TRAVEL DATES</small></div>
+<div><b>05 DAYS</b><small>SAIGON JOURNAL</small></div>
+<div><b>01 CITY</b><small>VIETNAM</small></div>
+</div>
+</section>
+<main>
+<section id="home" class="page active">
+<div class="head"><h2>旅程速覽</h2><small>YOUR JOURNEY</small></div>
+<div class="quickgrid">
+<div class="quick">✈️<strong>來回航班</strong><span>TPE ⇄ SGN · 已訂票</span></div>
+<div class="quick">🏡<strong>住宿 4 晚</strong><span>Em's Home 7</span></div>
+<div class="quick">☕<strong>咖啡與美食</strong><span>20 間口袋名單</span></div>
+</div>
+<div class="head"><h2>每日行程</h2><small>FIVE DAYS IN SAIGON</small></div>
+<div class="days" id="homeDays"></div><div id="homeTimeline"></div>
+<div class="head"><h2>出發前提醒</h2></div>
+<div class="info"><h3>入境準備</h3>
+<div class="row"><span>越南電子簽證</span><strong>確認申請與核准狀態</strong></div>
+<div class="row"><span>入境前申報</span><strong>出發前完成線上資料</strong></div>
+<div class="row"><span>訂位提醒</span><strong>Bếp Mẹ Ỉn 建議提前訂位</strong></div>
+<p class="hint"><a href="https://ninetyroadtravel.com/vietnam/viet-nam-e-visa/" target="_blank">電子簽證指南</a> · <a href="https://www.lanytrip.com/zh-TW/blogs/vietnam_travel/vietnam-entry-card-guide" target="_blank">入境卡指南</a></p>
+</div>
+</section>
+<section id="itinerary" class="page">
+<div class="head"><h2>五日行程</h2><small>THE ITINERARY</small></div>
+<div class="days" id="allDays"></div><div id="allTimeline"></div>
+</section>
+<section id="explore" class="page">
+<div class="head"><h2>城市探索</h2><small>PLACES TO EAT, SIP & WANDER</small></div>
+<input id="search" class="search" placeholder="搜尋店名、景點或關鍵字…">
+<div class="filters" id="filters"></div><div class="cards" id="places"></div>
+</section>
+<section id="trip" class="page">
+<div class="head"><h2>旅程資訊</h2><small>FLIGHTS & STAY</small></div>
+<div class="info"><h3>✈️ 航班資訊 · 已訂票</h3>
+<div class="row"><span>去程｜12/10</span><strong>TPE → SGN</strong></div>
+<div class="row"><span>起飛</span><strong>07:45（台灣時間）</strong></div>
+<div class="row"><span>抵達</span><strong>10:20（越南時間）</strong></div>
+<div class="row"><span>回程｜12/14</span><strong>SGN → TPE</strong></div>
+<div class="row"><span>起飛</span><strong>16:50（越南時間）</strong></div>
+<div class="row"><span>抵達</span><strong>21:10（台灣時間）</strong></div>
+<div class="row"><span>機票</span><strong>NT$ 7,146 / 來回</strong></div>
+</div>
+<div class="info"><h3>🏡 住宿資訊 · 4 晚</h3>
+<div class="row"><span>住宿名稱</span><strong>Hà-Nội Studio near Buivien street | Em's Home 7</strong></div>
+<div class="row"><span>入住</span><strong>12/10 – 12/14</strong></div>
+<div class="row"><span>住宿費用</span><strong>NT$ 7,154</strong></div>
+</div>
+<div class="info"><h3>🎟️ 體驗與門票</h3>
+<div class="row"><span>胡志明市美術館</span><strong>NT$ 38</strong></div>
+<div class="row"><span>觀光巴士</span><strong>NT$ 156</strong></div>
+<div class="row"><span>西貢晚餐遊船</span><strong>NT$ 1,600</strong></div>
+<div class="row"><span>Ao Dai 租借</span><strong>NT$ 350</strong></div>
+</div>
+</section>
+<section id="budget" class="page">
+<div class="head"><h2>花費與必買</h2><small>THE LITTLE LEDGER</small></div>
+<div class="info"><h3>目前已知固定費用</h3>
+<div class="total">NT$ 14,406</div>
+<p class="hint">機票、住宿與體驗門票合計；餐飲、交通、購物尚未記錄，並非完整旅費。</p>
+<div class="row"><span>機票</span><strong>NT$ 7,146</strong></div>
+<div class="row"><span>住宿</span><strong>NT$ 7,154</strong></div>
+<div class="row"><span>體驗門票</span><strong>NT$ 2,144</strong></div>
+</div>
+<div class="info"><h3>🛍️ 想買清單</h3><div id="buy"></div></div>
+<div class="info hint">Notion 花費資料庫目前尚無紀錄。這裡先保留記帳區。</div>
+</section>
+<div class="foot">MADE FOR YOUR SAIGON DAYS · 2026</div>
+</main>
+<nav class="nav">
+<button data-page="home" class="active"><b>⌂</b>首頁</button>
+<button data-page="itinerary"><b>▤</b>行程</button>
+<button data-page="explore"><b>⌖</b>探索</button>
+<button data-page="trip"><b>✈</b>旅程</button>
+<button data-page="budget"><b>♡</b>花費</button>
+</nav>
+</div>
+<script>
+const days={
+'12/10':['星期四','抵達西貢 · 第一郡漫遊',[
+['07:45','TPE → SGN','交通','抵達時間 10:20（越南時間）'],
+['11:30','WhaleLO Luggage Storage','行李','先寄放行李'],
+['12:00','Phở Việt Nam','越式','午餐'],
+['13:30','濱城市場','景點','感受市場日常'],
+['14:30','Ginkgo Concept Store','購物','在地選物'],
+['15:00','Saigon Kitsch','購物','越南風格紀念品'],
+['15:30','111 Concept Store','購物','逛選物小店'],
+['16:30','OKKIO','咖啡','咖啡時間'],
+['17:30','咖啡公寓','景點','Nguyễn Huệ 特色公寓'],
+['19:00','Bếp Mẹ Ỉn','越式','建議提前訂位'],
+['20:30',"Em’s Home 7",'住宿','入住休息'],
+['21:00','STIR','酒吧','夜晚小酌']]],
+'12/11':['星期五','奧黛體驗 · 粉紅教堂與老城區',[
+['09:00','AoDai.Moment Studio','體驗','租借奧黛'],
+['10:30','Blue Dream Bread Saigon','咖啡','早餐與麵包'],
+['11:00','粉紅教堂','景點','Tân Định Church'],
+['12:00','Cộng Coffee','咖啡','越南咖啡'],
+['13:00','Phở Hòa Pasteur','越式','午餐'],
+['14:00','中央郵局','景點','Saigon Central Post Office'],
+['14:30','胡志明市書街','景點','Nguyễn Văn Bình Book Street'],
+['15:30','Café Linh','咖啡','午後咖啡'],
+['17:00','歸還奧黛','體驗','回工作室還服裝'],
+['18:30','Quan Nem Restaurant','越式','晚餐'],
+['20:30','Chill Skybar','酒吧','夜景酒吧']]],
+'12/12':['星期六','美術館與城市地標 · 西貢河夜色',[
+['09:00','NaH Makeup Academy','體驗','妝髮體驗'],
+['11:00','Little HaNoi Egg Coffee','咖啡','蛋咖啡'],
+['12:00','胡志明市美術館','景點','門票約 NT$38'],
+['13:00','Kobe French Bistro','西式','午餐'],
+['14:00','The New Playground','購物','潮流選物'],
+['15:00','胡志明市市政廳','景點','人民委員會大廳周邊'],
+['16:00','胡志明市大劇院','景點','Saigon Opera House'],
+['16:30','阮惠步行街','景點','傍晚散步'],
+['17:00','西貢晚餐遊船','體驗','請確認登船時間'],
+['19:00','Mùa Craft Saké','酒吧','可能與遊船行程重疊，建議確認']]],
+'12/13':['星期日','咖啡早晨 · 城市慢逛',[
+['09:00','Nhà Ba Teria','咖啡','早餐'],
+['10:30','第三郡逛街','購物','彈性安排'],
+['12:30','Bếp Cuốn Sài Gòn','越式','午餐'],
+['14:00','第一郡逛街','購物','市中心自由活動'],
+['15:30','Bánh Mì Huynh Hoa','越式','人氣法國麵包'],
+['16:30','觀光巴士','體驗','門票約 NT$156'],
+['19:00','Pizza 4P’s Ben Thanh','西式','晚餐'],
+['20:30','AYen Spa','體驗','按摩放鬆']]],
+'12/14':['星期一','最後一杯咖啡 · 帶著西貢回家',[
+['09:00','Tonkin Garden Egg Coffee','咖啡','早餐'],
+['11:00','Bánh canh cua Bà Ba','越式','螃蟹米苔目'],
+['12:30','Takashimaya Star Kitchen','購物','最後採買伴手禮'],
+['16:50','SGN → TPE','交通','越南時間起飛，台灣時間 21:10 抵達']]]};
+const places=[
+['胡志明市書街','景點'],['咖啡公寓','景點'],['濱城市場','景點'],['范五老街','景點'],
+['胡志明市大劇院','景點'],['胡志明市市政廳','景點'],['中央郵局','景點'],['粉紅教堂','景點'],
+['胡志明市美術館','景點'],['阮惠步行街','景點'],['Ginkgo Concept Store','購物'],
+['111 Concept Store','購物'],['Saigon Kitsch','購物'],['The New Playground','購物'],
+['觀光巴士','體驗'],['西貢晚餐遊船','體驗'],['AoDai.Moment Studio','體驗'],
+['NaH Makeup Academy','體驗'],['AYen Spa','體驗'],['Café Linh','咖啡'],
+['L’Usine Le Thanh Ton','咖啡'],['Blue Dream Bread Saigon','咖啡'],['OKKIO','咖啡'],
+['Tonkin Garden Egg Coffee & Eatery','咖啡'],['Nhà Ba Teria','咖啡'],['Cộng Coffee','咖啡'],
+['Little HaNoi Egg Coffee','咖啡'],['Pizza 4P’s Ben Thanh','西式'],['Kobe French Bistro','西式'],
+['Bánh Mì Huynh Hoa','越式'],['Bếp Mẹ Ỉn','越式'],['Phở Việt Nam','越式'],
+['Quan Nem Restaurant','越式'],['Bánh canh cua Bà Ba','越式'],['Phở Hòa Pasteur','越式'],
+['Bếp Cuốn Sài Gòn','越式'],['Chill Skybar','酒吧'],['STIR','酒吧'],
+['Summer Experiment','酒吧'],['Mùa Craft Saké','酒吧']];
+let selected='12/10',cat='全部';
+const keys=Object.keys(days);
+function drawTimeline(day,target){
+let d=days[day];
+document.getElementById(target).innerHTML=
+'<div class="daytitle"><b>'+day.split('/')[1]+'</b><div><h3>'+d[0]+' · '+d[1]+'</h3><small>DAY '+(keys.indexOf(day)+1)+' / 05</small></div></div><div class="timeline">'+
+d[2].map(x=>'<article class="event"><div class="eventtop"><span class="time">'+x[0]+'</span><span class="eventname">'+x[1]+'</span><span class="tag">'+x[2]+'</span></div><p class="note">'+x[3]+'</p></article>').join('')+'</div>';
+}
+function dayNav(id){
+document.getElementById(id).innerHTML=keys.map(k=>'<button data-day="'+k+'" class="'+(k===selected?'active':'')+'">'+k+' '+days[k][0].slice(2)+'</button>').join('');
+document.querySelectorAll('#'+id+' button').forEach(b=>b.onclick=()=>{
+selected=b.dataset.day;dayNav('homeDays');dayNav('allDays');
+drawTimeline(selected,'homeTimeline');drawTimeline(selected,'allTimeline');
+});
+}
+dayNav('homeDays');dayNav('allDays');
+drawTimeline(selected,'homeTimeline');drawTimeline(selected,'allTimeline');
+const categories=['全部','景點','咖啡','越式','西式','酒吧','購物','體驗'];
+document.getElementById('filters').innerHTML=categories.map(x=>'<button class="'+(x===cat?'active':'')+'">'+x+'</button>').join('');
+function renderPlaces(){
+let q=document.getElementById('search').value.toLowerCase();
+let arr=places.filter(p=>(cat==='全部'||p[1]===cat)&&p[0].toLowerCase().includes(q));
+document.getElementById('places').innerHTML=arr.map(p=>
+'<article class="place"><div><h3>'+p[0]+'</h3><p>收錄於你的旅行清單</p></div><div class="placefoot"><span>'+p[1]+'</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(p[0]+' Ho Chi Minh City')+'">地圖 ↗</a></div></article>'
+).join('')||'<p class="hint">沒有找到符合的地點</p>';
+}
+document.querySelectorAll('#filters button').forEach(b=>b.onclick=()=>{
+cat=b.textContent;
+document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('active',x===b));
+renderPlaces();
+});
+document.getElementById('search').addEventListener('input',renderPlaces);
+renderPlaces();
+document.getElementById('buy').innerHTML=['ORION 可頌餅乾','河粉口味樂事','MAROU'].map(x=>'<label class="buy"><input type="checkbox"> '+x+'</label>').join('');
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{
+document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x===b));
+document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===b.dataset.page));
+window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+</body>
+</html>
